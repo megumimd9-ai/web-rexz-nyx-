@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rexz Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://files.catbox.moe/ldwbrw.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .container {
+      padding: 2rem;
+    }
+
+    .product {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: black;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .product h3 {
+      margin: 0.5rem 0;
+    }
+
+    .btn {
+      background: #0077cc;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+
+    .payment {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: black;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 10px;
+    }
+
+    .method-options {
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .method-options button {
+      display: block;
+      width: 100%;
+      background-color: #eee;
+      border: none;
+      padding: 0.7rem;
+      margin: 0.3rem 0;
+      text-align: left;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .account-number {
+      display: none;
+      background: #d4edda;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border-left: 4px solid #28a745;
+      border-radius: 5px;
+    }
+
+    #qrisImage {
+      display: none;
+      margin-top: 1rem;
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+    }
+
+    footer {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      margin-top: 2rem;
+      color: white;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Rexz NyX Store</h1>
+  <p>Toko Hosting Online Serba Ada!</p>
+</header>
+
+<div class="container">
+
+  <div class="product">
+    <img src="https://files.catbox.moe/rgve2j.jpg" alt="Nokos Wa Fresh">
+    <h3>Nokos Wa Fresh</h3>
+    <p>Harga: Rp6.000 - Rp30.000</p>
+    <a href="https://t.me/rexznyx" target="_blank">
+      <button class="btn">Beli Sekarang</button>
+    </a>
+  </div>
+
+  <div class="product">
+    <img src="https://files.catbox.moe/d6f6el.jpg" alt="Panel Pterodactyl">
+    <h3>Panel Pterodactyl</h3>
+    <p>Harga: Rp1.000 - Rp5.000</p>
+    <a href="https://t.me/rexznyx" target="_blank">
+      <button class="btn">Beli Sekarang</button>
+    </a>
+  </div>
+
+  <div class="product">
+    <img src="https://files.catbox.moe/oe5ncm.jpg" alt="Jasa Rename SC">
+    <h3>Jasa Rename SC</h3>
+    <p>Harga: Rp2.000 - Rp10.000</p>
+    <a href="https://t.me/rexznyx" target="_blank">
+      <button class="btn">Beli Sekarang</button>
+    </a>
+  </div>
+
+  <div class="payment">
+    <h3>Metode Pembayaran</h3>
+    <button class="btn" onclick="togglePayment()">Lihat Metode</button>
+
+    <div class="method-options" id="paymentOptions">
+      <button onclick="toggleQRIS()">QRIS</button>
+      <img id="qrisImage" src="https://files.catbox.moe/mu8jee.jpg" alt="QRIS Image" />
+
+      <button onclick="toggleAccount('dana')">DANA</button>
+      <div id="dana" class="account-number">Nomor DANA: 0882-9471-1296</div>
+
+      <button onclick="toggleAccount('ovo')">OVO</button>
+      <div id="ovo" class="account-number">Nomor OVO: Belum Tersedia!</div>
+
+      <button onclick="toggleAccount('gopay')">GoPay</button>
+      <div id="gopay" class="account-number">Nomor GoPay: Belum Tersedia!</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Rexz Store. All rights reserved.
+</footer>
+
+<script>
+  function togglePayment() {
+    const paymentDiv = document.getElementById('paymentOptions');
+    paymentDiv.style.display = (paymentDiv.style.display === "none" || paymentDiv.style.display === "") ? "block" : "none";
+  }
+
+  function toggleAccount(id) {
+    const allAccounts = document.querySelectorAll('.account-number');
+    allAccounts.forEach(acc => {
+      if (acc.id !== id) {
+        acc.style.display = "none";
+      }
+    });
+    const target = document.getElementById(id);
+    target.style.display = (target.style.display === "block") ? "none" : "block";
+  }
+
+  function toggleQRIS() {
+    const img = document.getElementById('qrisImage');
+    img.style.display = img.style.display === "block" ? "none" : "block";
+  }
+</script>
+
+</body>
+</html>
